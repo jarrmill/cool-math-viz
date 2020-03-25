@@ -7,6 +7,7 @@
 </template>
 
 <script>
+  import Equation from './helpers';
   export default {
     data() {
       return {
@@ -15,8 +16,8 @@
     },
     computed: {
       answer: function() {
-        console.log(this)
-        return this.equation;
+        const EQ = new Equation(this.equation);
+        return EQ.solution;
       }
     }
   }
