@@ -1,8 +1,10 @@
 class pemdasEquation {
   constructor(equation) {
-    // all functions are pure funcs, except that they add stepsTaken
+    // all functions are pure funcs, except that they add stepsTaken and toggle isInParens
     this.equation = equation;
     this.stepsTaken = [];
+    this.isValid = this.validate(equation);
+    this.isInParens = false;
     this.operators = {
       "+": (a, b) => {return a + b},
       "-": (a, b) => {return a - b},
@@ -11,14 +13,16 @@ class pemdasEquation {
       "^": (a, b) => {return Math.pow(a, b)}
     }
 
-    this.solution = (this.validate(this.equation)) ? this.solve(equation) : "...";
+    this.solution = this.solve(equation);
   }
 
   solve(equation) {
     while(equation.match(/\(.*?\)/)) {
       let firstMatch = equation.match(/\(.*?\)/)[0]
+      this.isInParens = true;
       equation = equation.replace(`${firstMatch}`, this.solve(firstMatch.slice(1, -1)));
       this.push(equation);
+      this.isInParens = false;
     }
 
     let parsedEQ = this.parse(equation);
@@ -37,7 +41,7 @@ class pemdasEquation {
     while(arr.indexOf(operator) !== -1) {
       const idx = arr.indexOf(operator);
       arr.splice(idx - 1, 3, this.operators[operator](parseFloat(arr[idx - 1]), parseFloat(arr[idx + 1])));
-      this.push(arr.join('')); 
+      if (!this.isInParens) this.push(arr.join('')); 
     }
     return arr;
   }
@@ -60,13 +64,17 @@ class pemdasEquation {
       }
     }
     results.push(currentNumber);
-    this.push(results.join(''));
+    if (!this.isInParens) this.push(results.join(''));
     return results;
   }
 
   validate(equation) {
+    if (equation === '') return false;
     if (equation.indexOf(")(") !== -1) return false;
     if (equation.match(/^[A-Z]+$/)) return false;
+    if (!equation[0].match(/^[0-9]*$/) && equation[0] !== "(") return false;
+    if (!equation[equation.length - 1].match(/^[0-9]*$/) && equation[equation.length - 1] !== ")") return false;
+
     return true;
   }
 

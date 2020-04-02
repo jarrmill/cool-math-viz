@@ -1,16 +1,18 @@
 <template>
   <div id="app">
     <Pemdas />
+    <InteractivePemdas />
   </div>
 </template>
 
 <script>
 import Pemdas from './components/Pemdas/Pemdas.vue'
-
+import InteractivePemdas from './components/Pemdas/InteractivePemdas'
 export default {
   name: 'App',
   components: {
-    Pemdas
+    Pemdas,
+    InteractivePemdas
   }
 }
 </script>
