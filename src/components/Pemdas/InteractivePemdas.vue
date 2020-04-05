@@ -32,7 +32,7 @@
   export default {
     data() {
       return {
-        equation: "1+1+1+1",
+        equation: "6/2*(1+2)",
         activeChars: new Set()
       }
     },
