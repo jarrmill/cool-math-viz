@@ -1,19 +1,14 @@
 <template>
   <div id="app">
-    <PemdasSolver />
-    <InteractivePemdas />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import PemdasSolver from './PemdasSolver.vue'
-import InteractivePemdas from './InteractivePemdas.vue'
+
 export default {
-  name: 'App',
-  components: {
-    PemdasSolver,
-    InteractivePemdas
-  }
+  name: 'PemdasMain',
+
 }
 </script>
 
@@ -24,6 +19,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

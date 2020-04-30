@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Howdy!</h1>
     <div class="equation">
       <span
         class="eq-char" 
@@ -14,14 +13,16 @@
       </span>
     </div>
     <br>
-    <div v-for="(elem, j) in chars" :key="j">
-      {{ elem }}
-    </div>
     <button
       @click="handleSubmit"
       :disabled="!selectedEquation.isValid"
     >
       Submit
+    </button>
+    <button
+      @click="reset"
+    >
+      Reset
     </button>
   </div>
 </template>
@@ -32,10 +33,13 @@
   export default {
     data() {
       return {
-        equation: "6/2*(1+2)",
+        equation: this.initialEquation || "6*2/(1+1)",
         activeChars: new Set()
       }
     },
+    props: [
+      "initialEquation"
+    ],
     computed: {
       splitEquation: function() {
         const eq = this.equation.replace(' ', '');
@@ -58,6 +62,9 @@
       }
     },
     methods: {
+      reset: function (){
+        this.equation = this.initialEquation
+      },
       handleHover: function(e, i) {
         console.log('Hover e: ', i);
       },

@@ -7,8 +7,8 @@
       </div>
       <div
         class="link"
-        @click="go('/pemdas')">
-        <p>Operations</p>
+        @click="go('/about')">
+        <p>About</p>
       </div>
   </div>
 </template>
@@ -34,11 +34,12 @@
   border-bottom: 1px solid #ccc;
 }
 .link {
+  font-family: 'Montserrat', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 50px;
-  width: 80px;
+  width: 90px;
 }
 .link:hover {
   background-color: #ddd;
