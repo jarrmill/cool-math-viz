@@ -42,11 +42,22 @@
     ],
     computed: {
       splitEquation: function() {
+        const operators = new Set(['+', '-', '*', '/', '(', ')']);
+        const results = [];
         const eq = this.equation.replace(' ', '');
-        return eq.split('');
+        const split = eq.split('');
+        split.forEach((char, i) => {
+          let len = results.length;
+          if (len !== 0 && !operators.has(char) && !operators.has(this.equation[i - 1])) {
+            results[len - 1] = results[len - 1] + char;
+          } else {
+            results.push(char);
+            len += 1;
+          }
+        })
+        return results;
       },
-      isActive(e) {
-        console.log('Hello!', e);
+      isActive() {
         return {
           active: true
         }
@@ -57,7 +68,7 @@
       selectedEquation() {
         const start = this.chars[0];
         const end = this.chars[this.chars.length - 1]
-        const selectedEQ = new Equation(this.equation.slice(start, end + 1));
+        const selectedEQ = new Equation(this.splitEquation.slice(start, end + 1).join(''));
         return selectedEQ
       }
     },
@@ -65,8 +76,7 @@
       reset: function (){
         this.equation = this.initialEquation
       },
-      handleHover: function(e, i) {
-        console.log('Hover e: ', i);
+      handleHover: function() {
       },
       handleClick: function(e, i) {
         // because Sets aren't reactive, we have to hack a work around
@@ -88,11 +98,14 @@
         }
       },
       handleSubmit: function() {
-        const oldEQ = this.equation;
-        const insertEQ = this.selectedEquation.solution;
+        const oldEQ = this.splitEquation;
+        const insertEQ = this.selectedEquation.solution.toString();
         const start = this.chars[0];
         const end = this.chars[this.chars.length - 1];
-        const newEQ = oldEQ.slice(0, start) + insertEQ + oldEQ.slice(end + 1);
+        const newEQ = oldEQ.slice(0, start)
+                           .concat(insertEQ.split(''))
+                           .concat(oldEQ.slice(end + 1))
+                           .join('');
         this.equation = newEQ;
         this.activeChars = new Set();
       }

@@ -90,5 +90,13 @@ describe('PEMDAS', () => {
 
       assert.deepEqual(expected, actual.validate(eqString));
     })
+
+    it('should return false for an equation with an open bracket', () => {
+      const eqString = "1+1+(1";
+      const expected = false;
+      const actual = new Equation(eqString);
+
+      assert.deepEqual(expected, actual.validate(eqString));
+    })
   })
 })

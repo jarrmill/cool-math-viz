@@ -69,18 +69,30 @@ class pemdasEquation {
   }
 
   validate(equation) {
+    const counter = makeCounter(equation);
     if (equation === '') return false;
     if (equation.indexOf(")(") !== -1) return false;
     if (equation.match(/^[A-Z]+$/)) return false;
     if (!equation[0].match(/^[0-9]*$/) && equation[0] !== "(") return false;
     if (!equation[equation.length - 1].match(/^[0-9]*$/) && equation[equation.length - 1] !== ")") return false;
-
+    if (counter["("] !== counter[")"]) return false;
     return true;
   }
 
   push(equation) {
     this.stepsTaken.push(equation);
   }
+}
+
+const makeCounter = function(equation) {
+  const dict = {};
+  for (let i = 0; i < equation.length; i++) {
+    let char = equation[i];
+    if (dict[char]) dict[char] += 1;
+    else dict[char] = 1;
+  }
+
+  return dict;
 }
 
 module.exports = pemdasEquation;
