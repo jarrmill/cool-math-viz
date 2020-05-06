@@ -44,7 +44,6 @@
       },
       startTimer: function() {
         const id = setInterval(() => {
-          console.log('Hello!');
           this.timer += 1;
         }, 1000);
         this.intervalId = id;
