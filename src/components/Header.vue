@@ -1,20 +1,21 @@
 <template>
-  <div class="bar">
-      <div
-        class="link"
-        @click="go('/')">
-        <p>Home</p>
-      </div>
-      <div
-        class="link"
-        @click="go('/about')">
-        <p>About</p>
-      </div>
-  </div>
+  <v-app-bar 
+    app
+    color="gray"
+    dark
+  >
+  <v-app-bar-nav-icon @click="$emit('toggleDrawer')"></v-app-bar-nav-icon>
+  <v-toolbar-title @click="go('/')">StudyBeats - GRE</v-toolbar-title>
+  </v-app-bar>
 </template>
 
 <script>
   export default {
+    data() {
+      return {
+        drawer: false,
+      }
+    },
     methods: {
       go: function(link) {
         if (this.$router.currentRoute.path === link) return;
@@ -25,23 +26,5 @@
 </script>
 
 <style lang="scss" scoped>
-.bar {
-  display: flex;
-  align-items: center;
-  width: 100vw;
-  height: 50px;
-  margin: 0px;
-  border-bottom: 1px solid #ccc;
-}
-.link {
-  font-family: 'Montserrat', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-  width: 90px;
-}
-.link:hover {
-  background-color: #ddd;
-}
+
 </style>

@@ -1,12 +1,28 @@
 <template>
-  <div>
-    {{ this.currentQuestion.q }}
-    <input v-model="answer" placeholder="Your Answer Here">
-    <button @click="submit">Submit</button>
-    <p>{{ this.message }}</p>
-    <p>Timer: {{ this.timer }}</p>
-    <p>Score: {{ this.score }}</p>
-  </div>
+  <v-container fluid class="container">
+    <v-row :align="center" :justify="center" class="biggey">
+      <v-col cols="12">
+        <v-row>
+          <v-col>
+          {{ this.currentQuestion.q }}
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col>
+            <v-text-field v-model="answer" label="Your Answer Here"></v-text-field>
+            <v-btn @click="submit">Submit</v-btn>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col>
+            <p>{{ this.message }}</p>
+            <p>Timer: {{ this.timer }}</p>
+            <p>Score: {{ this.score }}</p>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -59,6 +75,12 @@
   }
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
+.biggey{
+  background-color: #fee;
+}
+.container{
+  background-color: #efe;
+  height: 100vh;
+}
 </style>

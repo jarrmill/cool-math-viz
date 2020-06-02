@@ -1,6 +1,7 @@
 <template>
-  <div class="container">
-    <div class="lesson">
+  <v-container>
+    <v-row>
+    <v-col class="lesson">
       <h1>Order of Operations (PEMDAS)</h1>
       <p>Order of Operations refers to the way we solve mathematical equations. Take a simple mathematical equation:</p>
       <p class="equation"> 3 x 4 / 2 + 2 </p>
@@ -35,12 +36,13 @@
       <p class="equation"> 64</p>
       <h3>Conclusion</h3>
       <p> Though it may appear simple, it is vital to learn this order. Moving forward, all equations will be solved using this method. </p>
-    </div>
-    <div class ="try-it">
+    </v-col>
+    <v-col>
       <h1>Try it yourself</h1>
       <PemdasSolver />
-    </div>
-  </div>
+    </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -55,11 +57,6 @@
 </script>
 
 <style lang="scss" scoped>
-  .container {
-    display: flex;
-    width: 100vw;
-    height: 100%;
-  }
   .lesson {
    flex: 1;
    height: 100vh;
@@ -75,7 +72,6 @@
   .equation {
     width: 50%;
     margin-left: 10px;
-    margin-bottom: 0px;
     margin-top: 0px;
     background-color: #eee;
     padding: 3px 3px 3px 5px;
