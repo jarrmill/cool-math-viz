@@ -26,11 +26,11 @@
 </template>
 
 <script>
-  import questions from '../../assets/questions/pemdas';
+  import modules from '../../modules';
   export default {
     data() {
       return {
-        questions,
+        questions: modules.pemdas.questions(),
         index: 0,
         answer: '',
         score: 0,

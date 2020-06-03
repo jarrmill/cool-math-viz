@@ -1,7 +1,9 @@
 <template>
   <div class="main">
-    <h1>Jarrod Miller's blog</h1>
-    <router-link to="/pemdas"> Order of Operations </router-link>
+    <h1>StudyBeats - GRE</h1>
+    <router-link to="/learn/pemdas"> Order of Operations </router-link>
+    <router-link to="/learn/pemdas"> Order of Operations </router-link>
+    <router-link to="/learn/pemdas"> Order of Operations </router-link>
   </div>
 </template>
 
