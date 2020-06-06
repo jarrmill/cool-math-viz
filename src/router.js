@@ -2,11 +2,9 @@ import Vue from 'vue';
 import Router from 'vue-router'
 import Home from './components/Home.vue';
 import About from './components/About/About.vue';
-import Pemdas from './components/Pemdas/Main.vue';
-import PemdasLesson from './components/Pemdas/Lesson.vue';
-import PemdasSolve from './components/Pemdas/Solve.vue';
 import Learn from './components/Learn/Learn.vue';
 import Classic from './components/Learn/Classic.vue';
+import Interactive from './components/Learn/Interactive.vue';
 import Mode from './components/Learn/Mode.vue';
 
 Vue.use(Router);
@@ -24,21 +22,6 @@ export default new Router({
       component: About
     },
     {
-      path: '/pemdas',
-      name: 'Pemdas',
-      component: Pemdas,
-      children: [
-        {
-          path: '',
-          component: PemdasLesson
-        },
-        {
-          path: 'solve',
-          component: PemdasSolve
-        }
-      ]
-    },
-    {
       path: '/learn/:lesson',
       name: 'Learn',
       component: Learn,
@@ -54,6 +37,11 @@ export default new Router({
           name: 'Classic',
           component: Classic,
         },
+        {
+          path: 'interactive',
+          name: 'Interactive',
+          component: Interactive,
+        }
       ]
     }
   ]

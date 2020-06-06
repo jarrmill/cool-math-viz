@@ -14,10 +14,10 @@
               <router-link :to='classicRoute'>Classic Lesson</router-link>
             </li>
             <li v-if="lesson.interactive">
-              Interactive
+              <router-link :to='interactiveRoute'>Interactive</router-link>
             </li>
             <li v-if="lesson.lesson">
-              Lesson
+              <router-link :to='lessonRoute'>Lesson</router-link>
             </li>
           </ul>
         </v-row>
@@ -37,6 +37,12 @@
     computed: {
       classicRoute() {
         return `${this.lessonKey}/classic`
+      },
+      interactiveRoute() {
+        return `${this.lessonKey}/interactive`
+      },
+      lessonRoute() {
+        return `${this.lessonKey}/lesson`
       }
     },
     beforeMount() {

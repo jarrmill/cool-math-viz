@@ -1,5 +1,4 @@
 import pemdas from './pemdas';
-
 const index = {
   pemdas: {
     name: 'Order of Operations',
