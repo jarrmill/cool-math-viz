@@ -8,7 +8,7 @@
               v-on:enter="enterChange"
               v-on:leave="leaveChange"
             >
-              <div v-if="!isQuestionChanging">
+              <div v-if="!isQuestionChanging" class="question">
               {{ currentQuestion.question }}
               </div>
             </transition>
@@ -136,5 +136,14 @@
 .input{
   background-color: #fff;
   border: 1px solid black;
+}
+.question{
+  font-size: 140%;
+}
+.container{
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

@@ -5,6 +5,8 @@
     dark
   >
   <v-app-bar-nav-icon @click="$emit('toggleDrawer')"></v-app-bar-nav-icon>
+  <div class="logo">
+  </div>
   <v-toolbar-title @click="go('/')">StudyBeats - GRE</v-toolbar-title>
   </v-app-bar>
 </template>
@@ -26,5 +28,11 @@
 </script>
 
 <style lang="scss" scoped>
-
+.logo {
+  height: 20px;
+  width: 20px;
+  background-image: linear-gradient(to right, #3d348b , #7678ed);
+  border-radius: 50%;
+  margin-right: 10px;
+}
 </style>

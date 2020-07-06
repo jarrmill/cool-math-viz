@@ -1,6 +1,6 @@
 <template>
-  <v-container fluid class="container">
-    <v-row :align="center" :justify="center" class="biggey">
+  <v-container fluid class="main">
+    <v-row :align="center" :justify="center">
       <v-col cols="12">
         <v-row>
           <v-col>
@@ -79,8 +79,8 @@
 .biggey{
   background-color: #fee;
 }
-.container{
-  background-color: #efe;
+.main{
+  background-color: blue;
   height: 100vh;
 }
 </style>
